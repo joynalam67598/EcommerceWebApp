@@ -21,6 +21,14 @@
     {
       "library": "jquery-validate@1.19.3",
       "destination": "wwwroot/jquery-validate/"
+    },
+    {
+      "library": "fontawesome-iconpicker@3.2.0",
+      "destination": "wwwroot/fontawesome-iconpicker/"
+    },
+    {
+      "library": "font-awesome@5.15.4",
+      "destination": "wwwroot/font-awesome/"
     }
   ]
 }
