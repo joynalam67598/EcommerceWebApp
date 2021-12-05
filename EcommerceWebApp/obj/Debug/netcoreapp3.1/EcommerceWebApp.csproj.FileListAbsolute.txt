@@ -429,3 +429,4 @@ C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\bin\Debug\netcorea
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Footer.cshtml.g.cs
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Header.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Componentes\Slider\Slider.cshtml.g.cs

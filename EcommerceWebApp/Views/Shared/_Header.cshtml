@@ -1,59 +1,64 @@
 ﻿<header>
-        <nav class="navbar navbar-expand-sm navbar-light" id="navbar_top">
-            <div class="container">
-                <a href="/" class="navbar-brand text-center">
-                    <img src="/images/logo/alisha.jpg" hight="20px" width="120px" alt="Alish Mart" />
-                </a>
+    <nav class="navbar navbar-expand-sm navbar-light" id="navbar_top">
+        <div class="container col-sm-12   ml-lg-5">
+                <div class="col-sm-2">
+                    <a href="/" class="navbar-brand text-center">
+                        <img src="/images/logo/alisha.jpg" hight="20px" width="120px" alt="Alish Mart" />
+                    </a>
+                </div>
                 <button type="button" class="navbar-toggler" data-target="#mainMenu" data-toggle="collapse">
                     <span><i class="fa fa-search fa-2x text-info mr-3"></i></span>
                     <span><i class="fas fa-cart-plus fa-2x text-info"></i></span>
                 </button>
-                <div class="collapse navbar-collapse" id="mainMenu">
-                    <ul class="navbar-nav mr-auto">
-                        <li>
-                            <div class="container">
-                                <form method="post" asp-controller="" asp-action="">
-                                    <div class="col-sm-12">
-                                        <div class="row">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control border-2 border-info" required />
-                                                <div class="input-group-append">
-                                                    <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+                <div class="col-sm-10">
+                    <div class="collapse navbar-collapse" id="mainMenu">
+                        <div class="col-sm-10">
+                            <ul class="navbar-nav mr-auto">
+                                <li>
+                                    <div class="container">
+                                        <form method="post" asp-controller="" asp-action="">
+                                            <div class="col-sm-12">
+                                                <div class="row">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control border border-2 border-info" required />
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-info" type="submit"><i class="fas fa-search"></i></button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </form>
                                     </div>
-                                </form>
-                            </div>                            
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav">
-                        <li><a href="" class="nav-link"><span><i class="fas fa-cart-plus fa-2x text-info"></i></span></a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-            <nav class="navbar navbar-expand-sm bg-light navbar-light" id="navbar_top">
-                <div class="container">
-                    <a href="/" class="navbar-brand">
-                        <div class="row"><h3 class="mr-lg-5 mr-sm-5 text-info">CATEGORY</h3><span><i class="fas fa-chevron-down fa-2x text-info"></i></span></div>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-target="#mainMenu" data-toggle="collapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="mainMenu">
-                        <ul class="navbar-nav mr-auto">
-                            <li></li>
-                        </ul>
-                        <ul class="navbar-nav">
-                            <li><a href="" class="nav-link">Campaign</a></li>
-                            <li><a href="" class="nav-link">Discount</a></li>
-                            <li><a href="" class="nav-link">Sign UP</a></li>
-                            <li><a href="" class="nav-link">Login</a></li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-sm-2">
+                            <ul class="navbar-nav">
+                                <li><a href="" class="nav-link"><span><i class="fas fa-cart-plus fa-2x text-info"></i></span></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </nav>
-   
-  
+            </div>
+    </nav>
+    <nav class="navbar navbar-expand-sm bg-light navbar-light border border-3" id="navbar_top">
+        <div class="container col-sm-12 pr-lg-5 pl-lg-5">
+            <a href="/" class="navbar-brand">
+                <div class="row"><h3 class="mr-lg-5 text-info">CATEGORY</h3><span><i class="fas fa-chevron-down fa-2x text-info"></i></span></div>
+            </a>
+            <button type="button" class="navbar-toggler" data-target="#mainMenu" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainMenu">
+                <ul class="navbar-nav mr-auto">
+                </ul>
+                <ul class="navbar-nav">
+                    <li><a href="" class="nav-link">CAMPAIGN</a></li>
+                    <li><a href="" class="nav-link">DISCOUNT</a></li>
+                    <li><a href="" class="nav-link"><span><i class="fas fa-plus mr-sm-2 text-info"></i></span>SIGN UP</a></li>
+                    <li><a href="" class="nav-link"><span><i class="fas fa-user  mr-sm-2 text-info"></i></span>LOGIN</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </header>
