@@ -1,5 +1,27 @@
-﻿.jumbotron {
-    background-size: cover;
-    padding-top: 20%;
-    padding-bottom: 20%;
+﻿
+
+.card-img-top{
+    height:10vh;
+    width:100%;
+    object-fit:cover;
+}
+.owl-prev{
+    left:-30px;
+}
+.owl-next {
+    right: -30px;
+}
+
+.owl-next, .owl-prev{
+    position:absolute;
+    top: 40px;
+}
+
+.owl-next span, .owl-prev span {
+    font-size: 80px;
+    color:black;
+}
+
+.owl-theme, .owl-nav[class*= "owl-"]:hover{
+    background: transparent;
 }

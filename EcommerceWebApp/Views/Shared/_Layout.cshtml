@@ -6,6 +6,8 @@
     <title>@ViewData["Title"] - Alisha Mart</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/plugins/owlcarousel/assets/owl.carousel.min.css" />
+        <link rel="stylesheet" href="~/plugins/owlcarousel/assets/owl.theme.default.min.css"/>
         <link rel="stylesheet" href="~/font-awesome/css/all.css" />
     </environment>
     <environment exclude="Development">
@@ -21,7 +23,7 @@
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
-  
+
     <partial name="_Header" />
 
     <div class="container">
@@ -34,6 +36,8 @@
     <environment include="Development">
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/popper.js/umd/popper.min.js"></script>
+        <script src="~/plugins/owlcarousel/owl.carousel.min.js"></script>
         <script src="~/jquery-validate/jquery.validate.js"></script>
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
         <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
@@ -48,6 +52,7 @@
         <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
         <script src="~/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"></script>
     </environment>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
