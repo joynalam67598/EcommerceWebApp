@@ -430,3 +430,5 @@ C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\bin\Debug\netcorea
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Footer.cshtml.g.cs
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Header.cshtml.g.cs
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Componentes\Slider\Slider.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Product\ShowCategryAllProducts.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Product\ShowBrandAllProducts.cshtml.g.cs
