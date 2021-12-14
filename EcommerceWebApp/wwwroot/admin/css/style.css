@@ -1,0 +1,8 @@
+.add-section {
+    background-image: url("../images/home/welcome.jpg");
+    /*background-color: royalblue;*/
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+
+
