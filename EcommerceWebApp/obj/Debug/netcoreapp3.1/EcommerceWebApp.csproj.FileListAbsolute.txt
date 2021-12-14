@@ -432,3 +432,10 @@ C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcorea
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Componentes\Slider\Slider.cshtml.g.cs
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Product\ShowCategryAllProducts.cshtml.g.cs
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Views\Product\ShowBrandAllProducts.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_Footer.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_Header.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\_LeftNavBar.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
