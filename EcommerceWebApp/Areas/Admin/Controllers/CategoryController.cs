@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EcommerceWebApp.Models;
+using EcommerceWebApp.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,11 +10,34 @@ using System.Threading.Tasks;
 namespace EcommerceWebApp.Areas.Admin.Controllers
 {
     [Area("admin")]
+    [Route("admin/[controller]/[action]")]
     public class CategoryController : Controller
     {
-        // GET: CategoryController
-        public ActionResult Index()
+        private readonly ICategoryRepository _categoryRepository = null ;
+
+        public CategoryController(ICategoryRepository categoryRepository)
         {
+            _categoryRepository = categoryRepository;
+        }
+        // GET: CategoryController
+        public ViewResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddCategory(CategoryModel categoryModel)
+        {
+            if(ModelState.IsValid)
+            {
+               var categoryId = _categoryRepository.AddCategory(categoryModel);
+               if (categoryId > 0)
+               {
+                  return RedirectToAction(nameof(AddCategory), 
+                      new { isSuccess = true, categoryId });
+               }
+            }
+            ModelState.AddModelError("", "This is something error message");
             return View();
         }
 

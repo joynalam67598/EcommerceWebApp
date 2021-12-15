@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace EcommerceWebApp.Areas.Admin.Controllers
 {
     [Area("admin")]
+    [Route("admin/[controller]/[action]")]
     public class BrandController : Controller
     {
         // GET: BrandController
