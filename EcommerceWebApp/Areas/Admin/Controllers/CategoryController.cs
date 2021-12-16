@@ -20,8 +20,9 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
             _categoryRepository = categoryRepository;
         }
         // GET: CategoryController
-        public ViewResult AddCategory()
+        public ViewResult AddCategory(bool isSuccess = false)
         {
+            ViewBag.isSuccess = isSuccess;
             return View();
         }
 
@@ -39,6 +40,12 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
             }
             ModelState.AddModelError("", "This is something error message");
             return View();
+        }
+
+        public async Task<ViewResult> ManageCategories()
+        {
+            var categories = await _categoryRepository.GetAllCategories();
+            return View(categories);
         }
 
         // GET: CategoryController/Details/5

@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EcommerceWebApp.Models;
+using EcommerceWebApp.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,10 +13,41 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
     [Route("admin/[controller]/[action]")]
     public class BrandController : Controller
     {
-        // GET: BrandController
-        public ActionResult Index()
+        private readonly IBrandRepository _brandRepository = null;
+
+        public BrandController(IBrandRepository brandRepository)
         {
+            _brandRepository = brandRepository;
+        }
+
+
+        // GET: BrandController
+        public ViewResult AddBrand(bool isSuccess = false)
+        {
+            ViewBag.isSuccess = isSuccess;
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddBrand(BrandModel brandModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var brandId =  _brandRepository.AddBrand(brandModel);
+                if (brandId > 0)
+                {
+                    return RedirectToAction(nameof(AddBrand),
+                        new { isSuccess = true, brandId });
+                }
+            }
+            ModelState.AddModelError("", "This is something error message");
+            return View();
+        }
+
+        public async Task<ViewResult> ManageBrands()
+        {
+            var brands = await _brandRepository.GetAllBrands();
+            return View(brands);
         }
 
         // GET: BrandController/Details/5
