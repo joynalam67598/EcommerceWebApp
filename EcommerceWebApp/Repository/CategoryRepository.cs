@@ -18,7 +18,7 @@ namespace EcommerceWebApp.Repository
             _alishaMartContext = alishaMartContext;
         }
 
-        public int AddCategory(CategoryModel categoryModel)
+        public async Task<int> AddCategory(CategoryModel categoryModel)
         {
             var newCategory = new Categories
             {
@@ -26,7 +26,7 @@ namespace EcommerceWebApp.Repository
 
             };
             _alishaMartContext.Add(newCategory);
-            _alishaMartContext.SaveChanges();
+            await _alishaMartContext.SaveChangesAsync();
 
             return newCategory.Id;
         }
@@ -38,6 +38,32 @@ namespace EcommerceWebApp.Repository
                 Id = category.Id,
                 CategoryName = category.CategoryName
             }).ToListAsync();
+        }
+
+        public async Task<CategoryModel> GetCategory(int categoryId)
+        {
+            return await _alishaMartContext.Categories.Where(category => category.Id == categoryId)
+                .Select(category => new CategoryModel()
+                {
+                    Id = category.Id,
+                    CategoryName = category.CategoryName
+                }).FirstOrDefaultAsync();
+        }
+
+        public async Task<int> UpdateCategory(CategoryModel updatedCategory)
+        {
+            var category = await _alishaMartContext.Categories.FindAsync(updatedCategory.Id);
+            category.CategoryName = updatedCategory.CategoryName;
+            await _alishaMartContext.SaveChangesAsync();
+            return category.Id;
+        }
+
+        public async Task<int> DeleteCategory(int categroyId)
+        {
+            var category = await _alishaMartContext.Categories.FindAsync(categroyId);
+            _alishaMartContext.Categories.Remove(category);
+            await _alishaMartContext.SaveChangesAsync();
+            return 1;
         }
 
     }

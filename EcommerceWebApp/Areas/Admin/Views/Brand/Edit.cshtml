@@ -1,7 +1,7 @@
 ﻿@model EcommerceWebApp.Models.BrandModel
 
 @{
-    ViewData["Title"] = "AddBrand";
+    ViewData["Title"] = "Edit";
 }
 
 
@@ -9,24 +9,16 @@
     <div class="row">
         <div class="col-sm-12">
             <div asp-validation-summary="All" class="text-danger"></div>
-            @if (ViewBag.isSuccess == true)
-            {
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Congratulations!</strong> You have added new brand successfully.<br>
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-            }
             <div class="card">
                 <div class="card-header text-center">
                     <h4 class="text-primary">Add Category</h4>
                     <a class="float-right" asp-controller="Home" asp-area="Admin" asp-action="Index">Back to Home</a>
                 </div>
                 <div class="card-body">
-                    <form method="post" asp-controller="Brand" asp-area="Admin" asp-action="AddBrand" class="form-horizontal">
+                    <form method="post" asp-controller="Brand" asp-area="Admin" asp-action="Edit" class="form-horizontal">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <input asp-for="Id" class="form-control" hidden />
                         <div class="form-group row">
                             <label asp-for="BrandName" class="col-sm-3"></label>
                             <div class="col-sm-9">
@@ -35,7 +27,7 @@
                             </div>
                         </div>
                         <div class="col-sm-9 offset-sm-3">
-                            <input type="submit" value="Save" class="btn btn-block btn-primary" />
+                            <input type="submit" value="Update" class="btn btn-block btn-primary" />
                         </div>
                     </form>
                 </div>
@@ -43,5 +35,3 @@
         </div>
     </div>
 </div>
-
-

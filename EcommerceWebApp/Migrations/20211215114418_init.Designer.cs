@@ -10,7 +10,7 @@ namespace EcommerceWebApp.Migrations
 {
     [DbContext(typeof(AlishaMartContext))]
     [Migration("20211215114418_init")]
-    partial class init
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

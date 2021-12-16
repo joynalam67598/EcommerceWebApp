@@ -27,11 +27,11 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddCategory(CategoryModel categoryModel)
+        public async Task<IActionResult> AddCategory(CategoryModel categoryModel)
         {
             if(ModelState.IsValid)
             {
-               var categoryId = _categoryRepository.AddCategory(categoryModel);
+               var categoryId = await _categoryRepository.AddCategory(categoryModel);
                if (categoryId > 0)
                {
                   return RedirectToAction(nameof(AddCategory), 
@@ -42,8 +42,9 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
             return View();
         }
 
-        public async Task<ViewResult> ManageCategories()
+        public async Task<ViewResult> ManageCategories(bool isSuccess = false)
         {
+            ViewBag.isSuccess = isSuccess;
             var categories = await _categoryRepository.GetAllCategories();
             return View(categories);
         }
@@ -76,30 +77,48 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
         }
 
         // GET: CategoryController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var category = await _categoryRepository.GetCategory(id);
+            return View(category);
         }
 
         // POST: CategoryController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(CategoryModel categoryModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    await _categoryRepository.UpdateCategory(categoryModel);
+                    return RedirectToAction(nameof(ManageCategories),
+                      new { isSuccess = true});
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "This is something error message");
+                    return View(categoryModel);
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(categoryModel);
         }
 
         // GET: CategoryController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            await _categoryRepository.DeleteCategory(id);
+            return RedirectToAction(nameof(ManageCategories),
+                      new { isSuccess = true });
         }
 
         // POST: CategoryController/Delete/5
