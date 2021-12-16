@@ -8,5 +8,9 @@ namespace EcommerceWebApp.Repository
     {
         int AddBrand(BrandModel BrandModel);
         Task<List<BrandModel>> GetAllBrands();
+        Task<BrandModel> GetBrand(int brandId);
+
+        Task<int> UpdateBrand(BrandModel updatedBrand);
+        Task<int> DeleteBrand(int brandId);
     }
 }

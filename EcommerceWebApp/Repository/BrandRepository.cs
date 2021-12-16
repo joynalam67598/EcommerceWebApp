@@ -39,5 +39,29 @@ namespace EcommerceWebApp.Repository
             }).ToListAsync();
         }
 
+        public async Task<BrandModel> GetBrand(int brandId)
+        {
+            return await _alishaMartContext.Brands.Where(brand => brand.Id == brandId)
+                .Select(brand => new BrandModel()
+                {
+                    Id = brand.Id,
+                    BrandName = brand.BrandName
+                }).FirstOrDefaultAsync();
+        }
+        public async Task<int> UpdateBrand(BrandModel updatedBrand)
+        {
+            var brand = await _alishaMartContext.Brands.FindAsync(updatedBrand.Id);
+            brand.BrandName = updatedBrand.BrandName;
+            await _alishaMartContext.SaveChangesAsync();
+            return brand.Id;
+        }
+
+        public async Task<int> DeleteBrand(int brandId)
+        {
+            var brand = await _alishaMartContext.Brands.FindAsync(brandId);
+            _alishaMartContext.Brands.Remove(brand);
+            await _alishaMartContext.SaveChangesAsync();
+            return 1;
+        }
     }
 }

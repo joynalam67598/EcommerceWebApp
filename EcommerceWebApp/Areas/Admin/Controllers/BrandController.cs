@@ -78,30 +78,48 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
         }
 
         // GET: BrandController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var brand = await _brandRepository.GetBrand(id);
+            return View(brand);
         }
 
         // POST: BrandController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(BrandModel brandModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    await _brandRepository.UpdateBrand(brandModel);
+                    return RedirectToAction(nameof(ManageBrands),
+                      new { isSuccess = true });
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "This is something error message");
+                    return View(brandModel);
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return View(brandModel);
         }
 
         // GET: BrandController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+            await _brandRepository.DeleteBrand(id);
+            return RedirectToAction(nameof(ManageBrands),
+                      new { isSuccess = true });
         }
 
         // POST: BrandController/Delete/5
