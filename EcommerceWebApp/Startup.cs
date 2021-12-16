@@ -34,6 +34,7 @@ namespace EcommerceWebApp
             services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
             services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped<IBrandRepository, BrandRepository>();
 
         }
 

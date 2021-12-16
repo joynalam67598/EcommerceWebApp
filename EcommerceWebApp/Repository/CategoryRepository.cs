@@ -1,5 +1,6 @@
 ﻿using EcommerceWebApp.Data;
 using EcommerceWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,6 +29,15 @@ namespace EcommerceWebApp.Repository
             _alishaMartContext.SaveChanges();
 
             return newCategory.Id;
+        }
+
+        public async Task<List<CategoryModel>> GetAllCategories()
+        {
+            return await _alishaMartContext.Categories.Select(category => new CategoryModel()
+            {
+                Id = category.Id,
+                CategoryName = category.CategoryName
+            }).ToListAsync();
         }
 
     }

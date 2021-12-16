@@ -441,3 +441,6 @@ C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcorea
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\AddCategory.cshtml.g.cs
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\bin\Debug\netcoreapp3.1\appsettings.Production.json
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Brand\AddBrand.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Brand\ManageBrands.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\ManageCategories.cshtml.g.cs

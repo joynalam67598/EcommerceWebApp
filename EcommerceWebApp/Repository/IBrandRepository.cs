@@ -4,10 +4,9 @@ using System.Threading.Tasks;
 
 namespace EcommerceWebApp.Repository
 {
-    public interface ICategoryRepository
+    public interface IBrandRepository
     {
-        int AddCategory(CategoryModel categoryModel);
-
-        Task<List<CategoryModel>> GetAllCategories();
+        int AddBrand(BrandModel BrandModel);
+        Task<List<BrandModel>> GetAllBrands();
     }
 }

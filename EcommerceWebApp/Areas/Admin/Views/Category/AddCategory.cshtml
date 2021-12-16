@@ -9,19 +9,18 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             @if (ViewBag.isSuccess == true)
             {
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Congratulations!</strong> You have added new category successfully.<br />
-                    Click <a asp-controller="Book" asp-action="GetBook" asp-route-id="@ViewBag.bookId">here</a> to view the details.
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations!</strong> You have added new category successfully.<br />
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+                
             }
             <div class="card">
                 <div class="card-header text-center">
                     <h4 class="text-primary">Add Category</h4>
-                    <a class="float-right" asp-action="Index">Back to Home</a>
+                    <a class="float-right" asp-controller="Home" asp-area="Admin" asp-action="Index">Back to Home</a>
                 </div>
                 <div class="card-body">
                     <form method="post" asp-controller="Category" asp-area="Admin" asp-action="AddCategory" class="form-horizontal">

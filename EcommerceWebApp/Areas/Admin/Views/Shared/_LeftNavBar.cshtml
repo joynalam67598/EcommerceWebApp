@@ -23,7 +23,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
+         with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="/" class="nav-link active">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -42,15 +42,38 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a asp-area="Admin" asp-controller="category" asp-action="AddCategory"  class="nav-link">
+                            <a asp-area="Admin" asp-controller="category" asp-action="AddCategory" class="nav-link">
                                 <i class="nav-icon fas fa-edit"></i>
                                 <p>Add Category</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">
+                            <a asp-area="Admin" asp-controller="category" asp-action="ManageCategories" class="nav-link">
                                 <i class="nav-icon fas fa-table"></i>
-                                <p>Manage Location</p>
+                                <p>Manage Category</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-map-marker-alt nav-icon"></i>
+                        <p>
+                            Brand
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="Brand" asp-action="AddBrand" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>Add Brand</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a asp-area="Admin" asp-controller="Brand" asp-action="ManageBrands" class="nav-link">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>Manage Brand</p>
                             </a>
                         </li>
                     </ul>
@@ -78,9 +101,7 @@
                         </li>
                     </ul>
                 </li>
-                
-                </li>
-               
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
