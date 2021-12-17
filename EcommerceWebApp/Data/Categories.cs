@@ -9,5 +9,7 @@ namespace EcommerceWebApp.Data
     {
         public int Id { get; set; }
         public string CategoryName { get; set; }
+
+        public ICollection<Products> Products { get; set; }
     }
 }
