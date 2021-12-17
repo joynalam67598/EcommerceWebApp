@@ -15,8 +15,6 @@
                 </div>
                 <div class="card-body">
                     <form method="post" asp-controller="Category" asp-area="Admin" asp-action="Edit" class="form-horizontal">
-                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
                         <input asp-for="Id" class="form-control" hidden />
                         <div class="form-group row">
                             <label asp-for="CategoryName" class="col-sm-3"></label>
