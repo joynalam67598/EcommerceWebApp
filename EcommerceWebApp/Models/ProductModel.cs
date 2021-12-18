@@ -41,16 +41,16 @@ namespace EcommerceWebApp.Models
         [Required]
         public DateTime StockInDate { get; set; }
 
-        [Display(Name = "Choose a cover photo for your product.")]
+        [Display(Name = "Cover Photo")]
         [Required]
         public IFormFile CoverImage { get; set; }
         public string CoverImageUrl { get; set; }
 
-        [Display(Name = "Choose gellary images for your product.")]
+        [Display(Name = "Gellary Photos")]
         [Required]
         public IFormFileCollection ProductImages { get; set; }
 
-        public List<ProductImageModel> ProductImageModel { get; set; }
+        public List<ProductImageModel> ProductImage { get; set; }
 
 
 

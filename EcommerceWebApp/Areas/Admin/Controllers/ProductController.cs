@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EcommerceWebApp.Models;
+using EcommerceWebApp.Repository;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,8 +9,20 @@ using System.Threading.Tasks;
 
 namespace EcommerceWebApp.Areas.Admin.Views.Product
 {
+    [Area("admin")]
+    [Route("admin/[controller]/[action]")]
     public class ProductController : Controller
     {
+        private readonly IBrandRepository _brandRepository = null;
+        private readonly ICategoryRepository _categoryRepository = null;
+
+        public ProductController(IBrandRepository brandRepository,
+            ICategoryRepository categoryRepository)
+        {
+            _brandRepository = brandRepository;
+            _categoryRepository = categoryRepository;
+        }
+
         // GET: ProductController
         public ActionResult Index()
         {
@@ -22,8 +36,10 @@ namespace EcommerceWebApp.Areas.Admin.Views.Product
         }
 
         // GET: ProductController/Create
-        public ActionResult Create()
+        public ViewResult Create(bool isSuccess = false,int bookId=0)
         {
+            ViewBag.isSuccess = isSuccess;
+            ViewBag.bookId = bookId;
             return View();
         }
 
