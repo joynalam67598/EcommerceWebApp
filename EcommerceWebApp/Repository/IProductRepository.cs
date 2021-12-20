@@ -8,5 +8,7 @@ namespace EcommerceWebApp.Repository
     {
         Task<int> AddProduct(ProductModel productModel);
         Task<List<ProductModel>> GetAllProducts();
+        Task<ProductModel> GetProductDetails(int productId);
+        Task<int> UpdateProduct(ProductImageModel updatedProduct);
     }
 }

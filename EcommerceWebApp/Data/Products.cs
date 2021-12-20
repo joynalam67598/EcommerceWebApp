@@ -22,8 +22,8 @@ namespace EcommerceWebApp.Data
         public DateTime? StockInDate { get; set; }
 
         public string CoverImageUrl { get; set; }
-        public Categories Categories { get; set; }
-        public Brands Brands { get; set; }
+        public Categories Category { get; set; }
+        public Brands Brand { get; set; }
 
         public ICollection<ProductImages> ProductImages { get; set; }
 
