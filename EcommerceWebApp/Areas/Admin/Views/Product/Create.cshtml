@@ -26,7 +26,7 @@
                     <a class="float-right" asp-controller="Product" asp-area="Admin" asp-action="Index">Products List</a>
                 </div>
                 <div class="card-body">
-                    <form method="post" asp-controller="Product" asp-area="Admin" asp-action="Create" class="form-horizontal">
+                    <form method="post" enctype="multipart/form-data" asp-controller="Product" asp-area="Admin" asp-action="Create" class="form-horizontal">
 
                         <div class="form-group row">
                             <label asp-for="BrandId" class="col-sm-3"></label>
