@@ -38,9 +38,10 @@ namespace EcommerceWebApp.Areas.Admin.Views.Product
         }
 
         // GET: ProductController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ViewResult> Details(int id)
         {
-            return View();
+            var product = await _productRepository.GetProductDetails(id);
+            return View(product);
         }
 
         // GET: ProductController/Create
@@ -86,8 +87,9 @@ namespace EcommerceWebApp.Areas.Admin.Views.Product
         }
 
         // GET: ProductController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ViewResult> Edit(int id)
         {
+            var product = await _productRepository.GetProductDetails(id);
             return View();
         }
 

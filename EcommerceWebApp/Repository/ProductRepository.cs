@@ -57,14 +57,49 @@ namespace EcommerceWebApp.Repository
                 ProductName = product.ProductName,
                 ProductCode = product.ProductCode,
                 BrandId = product.BrandId,
-                Brand = product.Brands.BrandName,
+                BrandName = product.Brand.BrandName,
                 CategoryId = product.CategoryId,
-                Category = product.Categories.CategoryName,
+                CategoryName = product.Category.CategoryName,
                 BuyingPrice = product.BuyingPrice,
                 SellingPrice = product.SellingPrice,
                 AvailableQuantity = product.AvailableQuantity,
-                StockInDate = product.StockInDate.GetValueOrDefault()
+                StockInDate = product.StockInDate.GetValueOrDefault().Date,
             }).ToListAsync();
+        }
+
+        public async Task<ProductModel> GetProductDetails(int productId)
+        {
+            return await _alishaMartContext.Products.Where(product => product.Id == productId)
+                .Select(product => new ProductModel()
+                {
+                    Id = product.Id,
+                    ProductName = product.ProductName,
+                    ProductCode = product.ProductCode,
+                    BrandId = product.BrandId,
+                    BrandName = product.Brand.BrandName,
+                    CategoryId = product.CategoryId,
+                    CategoryName = product.Category.CategoryName,
+                    BuyingPrice = product.BuyingPrice,
+                    SellingPrice = product.SellingPrice,
+                    AvailableQuantity = product.AvailableQuantity,
+                    StockInDate = product.StockInDate.GetValueOrDefault().Date,
+                    CoverImageUrl = product.CoverImageUrl,
+                    Description = product.Description,
+                    ProductImage = product.ProductImages.Select(image => new ProductImageModel()
+                    {
+                        Id = image.Id,
+                        Name = image.Name,
+                        Url = image.Url,
+                    }).ToList()
+
+                }).FirstOrDefaultAsync();
+        }
+
+        public async Task<int> UpdateProduct(ProductImageModel updatedProduct)
+        {
+            var product =await _alishaMartContext.ProductImages.FindAsync(updatedProduct.Id);
+            return 1;
+
         }
     }
 }

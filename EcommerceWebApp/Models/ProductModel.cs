@@ -14,11 +14,11 @@ namespace EcommerceWebApp.Models
         [Display(Name = "Category")]
         [Required]
         public int CategoryId { get; set; }
-        public string Category { get; set; }
+        public string CategoryName { get; set; }
         [Display(Name = "Brand")]
         [Required]
         public int BrandId { get; set; }
-        public string Brand { get; set; }
+        public string BrandName { get; set; }
 
         [Required(ErrorMessage = "Please, enter the name of your product.")]
         [StringLength(100, MinimumLength = 3)]
