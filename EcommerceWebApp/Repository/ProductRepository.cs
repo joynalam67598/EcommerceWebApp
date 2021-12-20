@@ -1,5 +1,6 @@
 ﻿using EcommerceWebApp.Data;
 using EcommerceWebApp.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceWebApp.Repository
 {
-    public class ProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly AlishaMartContext _alishaMartContext = null;
         public ProductRepository(AlishaMartContext alishaMartContext)
@@ -33,19 +34,37 @@ namespace EcommerceWebApp.Repository
 
             newProduct.ProductImages = new List<ProductImages>();
 
-            foreach(var image in productModel.ProductImage)
+            foreach (var image in productModel.ProductImage)
             {
                 newProduct.ProductImages.Add(new ProductImages()
                 {
                     Name = productModel.ProductName,
                     Url = image.Url,
                 });
-               
+
             }
-             _alishaMartContext.Products.Add(newProduct);
+            _alishaMartContext.Products.Add(newProduct);
             await _alishaMartContext.SaveChangesAsync();
 
             return newProduct.Id;
+        }
+
+        public async Task<List<ProductModel>> GetAllProducts()
+        {
+            return await _alishaMartContext.Products.Select(product => new ProductModel()
+            {
+                Id = product.Id,
+                ProductName = product.ProductName,
+                ProductCode = product.ProductCode,
+                BrandId = product.BrandId,
+                Brand = product.Brands.BrandName,
+                CategoryId = product.CategoryId,
+                Category = product.Categories.CategoryName,
+                BuyingPrice = product.BuyingPrice,
+                SellingPrice = product.SellingPrice,
+                AvailableQuantity = product.AvailableQuantity,
+                StockInDate = product.StockInDate.GetValueOrDefault()
+            }).ToListAsync();
         }
     }
 }
