@@ -6,9 +6,10 @@ namespace EcommerceWebApp.Repository
 {
     public interface IProductRepository
     {
-        Task<int> AddProduct(ProductModel productModel);
+        Task<string> AddProduct(ProductModel productModel);
         Task<List<ProductModel>> GetAllProducts();
         Task<ProductModel> GetProductDetails(int productId);
-        Task<int> UpdateProduct(ProductImageModel updatedProduct);
+        Task<string> UpdateProduct(ProductModel updatedProduct);
+        Task<string> DeleteProduct(int productId);
     }
 }

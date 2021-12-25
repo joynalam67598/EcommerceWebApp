@@ -31,8 +31,9 @@ namespace EcommerceWebApp.Areas.Admin.Views.Product
         }
 
         // GET: ProductController
-        public async Task<ViewResult> Index()
+        public async Task<ViewResult> Index(string status = "")
         {
+            ViewBag.status = status;
             var products = await _productRepository.GetAllProducts();
             return View(products);
         }
@@ -45,9 +46,9 @@ namespace EcommerceWebApp.Areas.Admin.Views.Product
         }
 
         // GET: ProductController/Create
-        public ViewResult Create(bool isSuccess = false,int bookId=0)
+        public ViewResult Create(string status = "",int bookId=0)
         {
-            ViewBag.isSuccess = isSuccess;
+            ViewBag.status = status;
             ViewBag.bookId = bookId;
             return View();
         }
@@ -78,8 +79,8 @@ namespace EcommerceWebApp.Areas.Admin.Views.Product
                         productModel.ProductImage.Add(productImage);
                     }
                 }
-                var productId = await _productRepository.AddProduct(productModel);
-                if(productId>0) return RedirectToAction(nameof(Create), new { isSuccess = true, productId });
+                var message = await _productRepository.AddProduct(productModel);
+                if(message != null) return RedirectToAction(nameof(Create), new { status = message});
             }
             ModelState.AddModelError("", "This is something error message");
             return View();
@@ -90,28 +91,51 @@ namespace EcommerceWebApp.Areas.Admin.Views.Product
         public async Task<ViewResult> Edit(int id)
         {
             var product = await _productRepository.GetProductDetails(id);
-            return View();
+            return View(product);
         }
 
         // POST: ProductController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(ProductModel productModel)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
+            if (ModelState.IsValid)
+                {
+                    if (productModel.CoverImage != null)
+                    {
+                        string path = "images/product/cover/";
+                        productModel.CoverImageUrl = await UploadImage(path, productModel.CoverImage);
+                    }
+                    if (productModel.ProductImages != null)
+                    {
+                        string path = "images/product/gellary/";
+                        productModel.ProductImage = new List<ProductImageModel>();
+                        foreach (var image in productModel.ProductImages)
+                        {
+                            var productImage = new ProductImageModel()
+                            {
+                                Name = productModel.ProductName,
+                                Url = await UploadImage(path, image)
+                            };
+                            productModel.ProductImage.Add(productImage);
+                        }
+                    }
+                    var message = await _productRepository.UpdateProduct(productModel);
+                    if (message != null) return RedirectToAction(nameof(Index), new { status = message });
+                }
+                ModelState.AddModelError("", "This is something error message");
                 return View();
-            }
         }
 
         // GET: ProductController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            return View();
+            var message = await _productRepository.DeleteProduct(id);
+            if(message!="")
+            {
+                return RedirectToAction(nameof(Index), new { status = message });
+            }
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: ProductController/Delete/5
@@ -131,10 +155,10 @@ namespace EcommerceWebApp.Areas.Admin.Views.Product
 
         public async Task<string> UploadImage(string folderPath, IFormFile file)
         {
-            folderPath = Guid.NewGuid().ToString() + "_" + file.Name;
+            folderPath += Guid.NewGuid().ToString() + "_" + file.Name;
             var serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folderPath);
             await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
-            return "/"+serverFolder;
+            return "/"+folderPath;
         }
     }
 }

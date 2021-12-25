@@ -15,7 +15,7 @@ namespace EcommerceWebApp.Repository
         {
             _alishaMartContext = alishaMartContext;
         }
-        public async Task<int> AddProduct(ProductModel productModel)
+        public async Task<string> AddProduct(ProductModel productModel)
         {
             var newProduct = new Products()
             {
@@ -46,7 +46,7 @@ namespace EcommerceWebApp.Repository
             _alishaMartContext.Products.Add(newProduct);
             await _alishaMartContext.SaveChangesAsync();
 
-            return newProduct.Id;
+            return "New product added successfully.";
         }
 
         public async Task<List<ProductModel>> GetAllProducts()
@@ -95,11 +95,61 @@ namespace EcommerceWebApp.Repository
                 }).FirstOrDefaultAsync();
         }
 
-        public async Task<int> UpdateProduct(ProductImageModel updatedProduct)
+        public async Task<string> UpdateProduct(ProductModel updatedProduct)
         {
-            var product =await _alishaMartContext.ProductImages.FindAsync(updatedProduct.Id);
-            return 1;
+            var product =await _alishaMartContext.Products.FindAsync(updatedProduct.Id);
+            if(product!=null)
+            {
+                product.ProductName = updatedProduct.ProductName;
+                product.ProductCode = updatedProduct.ProductCode;
+                product.BrandId = updatedProduct.BrandId;
+                product.CategoryId = updatedProduct.CategoryId;
+                product.BuyingPrice = updatedProduct.BuyingPrice;
+                product.SellingPrice = updatedProduct.SellingPrice;
+                product.AvailableQuantity = updatedProduct.AvailableQuantity;
+                product.StockInDate = DateTime.UtcNow;
+                if (updatedProduct.CoverImage != null)
+                {
+                    product.CoverImageUrl = updatedProduct.CoverImageUrl;
+                }
+                product.Description = updatedProduct.Description;
+                _alishaMartContext.Update(product);
+                await _alishaMartContext.SaveChangesAsync();
+                return "Product information updated sucessfully.";
+            }
+            return "Something went wrong.";
 
+        }
+        public async Task<string> DeleteProduct(int productId)
+        {
+            var product = await _alishaMartContext.Products.FindAsync(productId);
+            if(product.Id > 0)
+            {
+                var productImages = await _alishaMartContext.ProductImages
+                    .Where(productImage => productImage.ProductsId == productId)
+                    .Select(image => new ProductImageModel()
+                    {
+                        Id = image.Id,
+                        Name = image.Name,
+                        Url = image.Url,
+                    }
+                         
+                    ).ToListAsync();
+                if (productImages.Count > 0)
+                {
+                    foreach(var image in productImages)
+                    {
+                        var productImage =await _alishaMartContext.ProductImages.FindAsync(image.Id);
+                        _alishaMartContext.ProductImages.Remove(productImage);
+                    }
+                }
+                _alishaMartContext.Products.Remove(product);
+                await _alishaMartContext.SaveChangesAsync();
+
+                return "Product removed successfully.";
+            }
+
+            return "Something went wrong.";
         }
     }
 }
