@@ -10,108 +10,131 @@
     <div class="row">
         <div class="col-sm-12">
             <div asp-validation-summary="All" class="text-danger"></div>
-            @if (ViewBag.isSuccess == true)
+            @if (ViewBag.status != "")
             {
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>Congratulations!</strong> You have added new product successfully.<br />
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>Congratulations!</strong>@ViewBag.status<br />
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
             }
             <div class="card">
-                <div class="card-header text-center">
-                    <h4 class="text-primary">Add Product</h4>
-                    <a class="float-right" asp-controller="Product" asp-area="Admin" asp-action="Index">Products List</a>
+                <div class="card-header bg-info">
+                    <h5 class="text-white">Add Product</h5>
                 </div>
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data" asp-controller="Product" asp-area="Admin" asp-action="Create" class="form-horizontal">
+                        <div class="row">
+                            <div class="col-sm-6">
 
-                        <div class="form-group row">
-                            <label asp-for="BrandId" class="col-sm-3"></label>
-                            <div class="col-sm-9">
-                                <select asp-for="BrandId" class="form-control"
-                                        asp-items="(await  _brandRepository.GetAllBrands()).Select(x=>
+                                <div class="form-group">
+                                    <label asp-for="BrandId"></label>
+                                    <select asp-for="BrandId" class="form-control"
+                                            asp-items="(await  _brandRepository.GetAllBrands()).Select(x=>
                                     new SelectListItem(){Text = x.BrandName , Value = x.Id.ToString()} )"
-                                        required>
-                                    <option value="" selected disabled>Select a language</option>
-                                </select>
-                                <span asp-validation-for="BrandId" class="text-danger"></span>
+                                            required>
+                                        <option value="" selected disabled>Select a language</option>
+                                    </select>
+                                    <span asp-validation-for="BrandId" class="text-danger"></span>
+
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label asp-for="CategoryId" class="col-sm-3"></label>
-                            <div class="col-sm-9">
-                                <select asp-for="CategoryId" class="form-control"
-                                        asp-items="(await  _categoryRepository.GetAllCategories()).Select(x=>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label asp-for="CategoryId"></label>
+                                    <select asp-for="CategoryId" class="form-control"
+                                            asp-items="(await  _categoryRepository.GetAllCategories()).Select(x=>
                                     new SelectListItem(){Text = x.CategoryName, Value = x.Id.ToString()} )"
-                                        required>
-                                    <option value="" selected disabled>Select a language</option>
-                                </select>
-                                <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                            required>
+                                        <option value="" selected disabled>Select a language</option>
+                                    </select>
+                                    <span asp-validation-for="CategoryId" class="text-danger"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label asp-for="ProductName" class="col-sm-3"></label>
-                            <div class="col-sm-9">
-                                <input asp-for="ProductName" class="form-control" required />
-                                <span asp-validation-for="ProductName" class="text-danger"></span>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="ProductName"></label>
+                                    <input asp-for="ProductName" class="form-control" required />
+                                    <span asp-validation-for="ProductName" class="text-danger"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label asp-for="ProductCode" class="col-sm-3"></label>
-                            <div class="col-sm-9">
-                                <input asp-for="ProductCode" class="form-control" required />
-                                <span asp-validation-for="ProductCode" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label asp-for="AvailableQuantity" class="col-sm-3"></label>
-                            <div class="col-sm-9">
-                                <input asp-for="AvailableQuantity" class="form-control" required />
-                                <span asp-validation-for="AvailableQuantity" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label asp-for="BuyingPrice" class="col-sm-3"></label>
-                            <div class="col-sm-9">
-                                <input type="number" asp-for="BuyingPrice" class="form-control" required />
-                                <span asp-validation-for="BuyingPrice" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label asp-for="SellingPrice" class="col-sm-3"></label>
-                            <div class="col-sm-9">
-                                <input  type="number" asp-for="SellingPrice" class="form-control" required />
-                                <span asp-validation-for="SellingPrice" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label asp-for="Description" class="col-sm-3"></label>
-                            <div class="col-sm-9">
-                                <input asp-for="Description" class="form-control" required />
-                                <span asp-validation-for="Description" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label asp-for="CoverImage" class="col-sm-3"></label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-6">
 
-                                <input asp-for="CoverImage" class="form-control" required />
-                                <span asp-validation-for="CoverImage" class="text-danger"></span>
+                                <div class="form-group">
+                                    <label asp-for="ProductCode"></label>
+                                    <input asp-for="ProductCode" class="form-control" required />
+                                    <span asp-validation-for="ProductCode" class="text-danger"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label asp-for="ProductImages" class="col-sm-3"></label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-6">
 
-                                <input asp-for="ProductImages" class="form-control" required />
-                                <span asp-validation-for="ProductImages" class="text-danger"></span>
+                                <div class="form-group">
+                                    <label asp-for="AvailableQuantity"></label>
+                                    <input asp-for="AvailableQuantity" class="form-control" required />
+                                    <span asp-validation-for="AvailableQuantity" class="text-danger"></span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-sm-9 offset-sm-3">
-                            <input type="submit" value="Save" class="btn btn-block btn-primary" />
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label asp-for="BuyingPrice"></label>
+                                    <input type="number" asp-for="BuyingPrice" class="form-control" required />
+                                    <span asp-validation-for="BuyingPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label asp-for="SellingPrice"></label>
+                                    <input type="number" asp-for="SellingPrice" class="form-control" required />
+                                    <span asp-validation-for="SellingPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+
+                                <div class="form-group">
+                                    <label asp-for="Description"></label>
+                                    <input asp-for="Description" class="form-control" required />
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="CoverImage"></label>
+                                    <input asp-for="CoverImage" type="file" class="form-control"
+                                           onchange="document.getElementById('CoverImage-imagePrv').src = window.URL.createObjectURL(this.files[0])" />
+                                    <span asp-validation-for="CoverImage" class="text-danger"></span>
+
+                                </div>
+                                <img id="CoverImage-imagePrv" src="~/images/dummyImage.png" alt="Product Image" width="120" height="120" style="border:1px;margin:0 0 10px 35%" />
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="ProductImages"></label>
+                                    <input asp-for="ProductImages" class="form-control"
+                                           onchange="document.getElementById('ProductImages-imagePrv').src = window.URL.createObjectURL(this.files[0])" />
+                                    <span asp-validation-for="ProductImages" class="text-danger"></span>
+
+                                </div>
+                                <img id="ProductImages-imagePrv" src="~/images/dummyImage.png" alt="Product Image" width="120" height="120" style="border:1px;margin:0 0 10px 35%" />
+                            </div>
+                            @*<div class="col-sm-6">
+            <vc:image-uploader field-name="@nameof(Model.CoverImage)">
+            </vc:image-uploader>
+        </div>
+        <div class="col-sm-6">
+            <vc:image-uploader field-name="@nameof(Model.ProductImages)">
+            </vc:image-uploader>
+        </div>*@
+                            <div class="col-sm-6">
+                                <a class="btn btn-block btn-secondary" asp-controller="Product" asp-area="Admin" asp-action="Index">Products List</a>
+                            </div>
+                            <div class="col-sm-6">
+                                <input type="submit" value="Save" class="btn btn-block btn-info" />
+                            </div>
                         </div>
                     </form>
                 </div>

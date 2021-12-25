@@ -1,0 +1,13 @@
+﻿@model string
+
+<div class="col-sm-6">
+    <div class="form-group">
+        <label asp-for="@Model"></label>
+        <input asp-for="@Model" type="file" class="form-control"
+               onchange="document.getElementById('@Model-imagePrv').src = window.URL.createObjectURL(this.files[0])" />
+        @*<span asp-validation-for="@Model" class="text-danger"></span>*@
+
+        @*@Html.ValidationMessage(Model, new { id = "textId", @class = "text-danger" })*@
+    </div>
+    <img id="@Model-imagePrv" src="~/images/dummyImage.png" alt="Product Image" width="120" height="120" style="border:1px;margin:0 0 10px 35%" />
+</div>
