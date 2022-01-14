@@ -10,11 +10,10 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <div asp-validation-summary="All" class="text-danger"></div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="card">
-                <div class="card-header text-center">
-                    <h4 class="text-primary">Update Product</h4>
-                    <a class="float-right" asp-controller="Product" asp-area="Admin" asp-action="Index">Products List</a>
+                <div class="card-header bg-info">
+                    <h4 class="text-white font-weight-bold">Update Product</h4>
                 </div>
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data" asp-controller="Product" asp-area="Admin" asp-action="Edit" class="form-horizontal">
@@ -86,30 +85,36 @@
                                     <span asp-validation-for="SellingPrice" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label asp-for="CoverImage"></label>
+                                        <input asp-for="CoverImage" type="file" class="form-control"
+                                               onchange="document.getElementById('CoverImage-imagePrv').src = window.URL.createObjectURL(this.files[0])" />
+                                        <span asp-validation-for="CoverImage" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <img id="CoverImage-imagePrv" class="img-fluid"src="@(string.IsNullOrEmpty(Model.CoverImageUrl) ? "~/images/dummyImage.png" : Model.CoverImageUrl)"
+                                         alt="Cover Image" width="120" height="100" style="border:1px;margin:10px" />
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
 
                                 <div class="form-group">
                                     <label asp-for="Description"></label>
-                                    <input asp-for="Description" class="form-control" required />
+                                    <textarea id="summernote" rows="5" asp-for="Description" class="form-control" required></textarea>
                                     <span asp-validation-for="Description" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label asp-for="CoverImage"></label>
-                                    <input asp-for="CoverImage" type="file" class="form-control"
-                                           onchange="document.getElementById('CoverImage-imagePrv').src = window.URL.createObjectURL(this.files[0])" />
-                                    <span asp-validation-for="CoverImage" class="text-danger"></span>
 
-                                </div>
-                                <img id="CoverImage-imagePrv" src="@(string.IsNullOrEmpty(Model.CoverImageUrl) ? "~/images/dummyImage.png" : Model.CoverImageUrl)"
-                                     alt="Cover Image" width="120" height="120" style="border:1px;margin:0 0 10px 35%" />
+                            <div class="col-sm-6">
+                                <a class="btn btn-block btn-secondary" asp-controller="Product" asp-area="Admin" asp-action="Index"><span><i class="fas fa-arrow-left"></i></span> Products List</a>
                             </div>
                             <div class="col-sm-6">
-                                <a class="btn btn-block btn-secondary" asp-controller="Product" asp-area="Admin" asp-action="Index">Products List</a>
-                            </div>
-                            <div class="col-sm-6">
-                                <input type="submit" value="Update" class="btn btn-block btn-info" />
+                                <button type="submit" class="btn btn-block btn-info" ><span><i class="fas fa-save"></i></span> Update</button>
                             </div>
                         </div>
                     </form>

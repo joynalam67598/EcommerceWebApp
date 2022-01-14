@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceWebApp.Data
 {
-    public class AlishaMartContext : DbContext
+    public class AlishaMartContext : IdentityDbContext
     {
         public AlishaMartContext(DbContextOptions<AlishaMartContext> options) : base(options)
         {
@@ -18,9 +19,10 @@ namespace EcommerceWebApp.Data
         
         public DbSet<Products> Products { get; set; }
         public DbSet<ProductImages> ProductImages { get; set; }
-
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Categories>()
                 .HasIndex(p => new { p.CategoryName })
                 .IsUnique(true);
