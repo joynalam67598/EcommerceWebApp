@@ -3,6 +3,7 @@ using EcommerceWebApp.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -30,12 +31,15 @@ namespace EcommerceWebApp
             services.AddDbContext<AlishaMartContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"))
             );
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<AlishaMartContext>();
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IBrandRepository, BrandRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IAdministrationRepository, AdministrationRepository>();
 
         }
 
@@ -55,6 +59,7 @@ namespace EcommerceWebApp
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             app.UseRouting();
 

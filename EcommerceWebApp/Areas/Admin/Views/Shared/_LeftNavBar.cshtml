@@ -34,7 +34,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-map-marker-alt nav-icon"></i>
+                        <i class="fas fa-copyright nav-icon"></i>
                         <p>
                             Category
                             <i class="fas fa-angle-left right"></i>
@@ -57,7 +57,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-map-marker-alt nav-icon"></i>
+                        <i class="fas fa-bold nav-icon"></i>
                         <p>
                             Brand
                             <i class="fas fa-angle-left right"></i>
@@ -85,27 +85,16 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-hotel nav-icon"></i>
-                        <p>
-                            Hotel
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
+                    <a asp-controller="Product" asp-action="Index" class="nav-link">
+                        <i class="fab fa-digital-ocean nav-icon"></i>
+                        <p>Orders</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>Add Hotel</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="/" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>Manage Hotel</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a asp-controller="Administration" asp-action="AddRole" class="nav-link">
+                        <i class="fab fa-product-hunt nav-icon"></i>
+                        <p>Roles</p>
+                    </a>
                 </li>
 
             </ul>

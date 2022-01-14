@@ -32,17 +32,17 @@ namespace EcommerceWebApp.Repository
                 CoverImageUrl = productModel.CoverImageUrl,
             };
 
-            newProduct.ProductImages = new List<ProductImages>();
+            //newProduct.ProductImages = new List<ProductImages>();
+            
+            //foreach (var image in productModel.ProductImage)
+            //{
+            //    newProduct.ProductImages.Add(new ProductImages()
+            //    {
+            //        Name = productModel.ProductName,
+            //        Url = image.Url,
+            //    });
 
-            foreach (var image in productModel.ProductImage)
-            {
-                newProduct.ProductImages.Add(new ProductImages()
-                {
-                    Name = productModel.ProductName,
-                    Url = image.Url,
-                });
-
-            }
+            //}
             _alishaMartContext.Products.Add(newProduct);
             await _alishaMartContext.SaveChangesAsync();
 

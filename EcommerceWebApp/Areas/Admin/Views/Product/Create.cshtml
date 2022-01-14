@@ -22,7 +22,7 @@
             }
             <div class="card">
                 <div class="card-header bg-info">
-                    <h5 class="text-white">Add Product</h5>
+                    <h5 class="text-white font-weight-bold">Add Product</h5>
                 </div>
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data" asp-controller="Product" asp-area="Admin" asp-action="Create" class="form-horizontal">
@@ -93,25 +93,30 @@
                                     <span asp-validation-for="SellingPrice" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-6 row">
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label asp-for="CoverImage"></label>
+                                        <input asp-for="CoverImage" type="file" class="form-control"
+                                               onchange="document.getElementById('CoverImage-imagePrv').src = window.URL.createObjectURL(this.files[0])" />
+                                        <span asp-validation-for="CoverImage" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <img id="CoverImage-imagePrv" class="img-fluid" src="~/images/dummyImage.png"
+                                         alt="Cover Image" width="120" height="100" style="border:2px;" />
+
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
 
                                 <div class="form-group">
                                     <label asp-for="Description"></label>
-                                    <input asp-for="Description" class="form-control" required />
+                                    <textarea id="summernote" rows="5" asp-for="Description" class="form-control" required></textarea>
                                     <span asp-validation-for="Description" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label asp-for="CoverImage"></label>
-                                    <input asp-for="CoverImage" type="file" class="form-control"
-                                           onchange="document.getElementById('CoverImage-imagePrv').src = window.URL.createObjectURL(this.files[0])" />
-                                    <span asp-validation-for="CoverImage" class="text-danger"></span>
-
-                                </div>
-                                <img id="CoverImage-imagePrv" src="~/images/dummyImage.png" alt="Product Image" width="120" height="120" style="border:1px;margin:0 0 10px 35%" />
-                            </div>
-                            <div class="col-sm-6">
+                            @*<div class="col-sm-6">
                                 <div class="form-group">
                                     <label asp-for="ProductImages"></label>
                                     <input asp-for="ProductImages" class="form-control"
@@ -120,15 +125,15 @@
 
                                 </div>
                                 <img id="ProductImages-imagePrv" src="~/images/dummyImage.png" alt="Product Image" width="120" height="120" style="border:1px;margin:0 0 10px 35%" />
-                            </div>
+                            </div>*@
                             @*<div class="col-sm-6">
-            <vc:image-uploader field-name="@nameof(Model.CoverImage)">
-            </vc:image-uploader>
-        </div>
-        <div class="col-sm-6">
-            <vc:image-uploader field-name="@nameof(Model.ProductImages)">
-            </vc:image-uploader>
-        </div>*@
+                                <vc:image-uploader field-name="@nameof(Model.CoverImage)">
+                                </vc:image-uploader>
+                            </div>
+                            <div class="col-sm-6">
+                                <vc:image-uploader field-name="@nameof(Model.ProductImages)">
+                                </vc:image-uploader>
+                            </div>*@
                             <div class="col-sm-6">
                                 <a class="btn btn-block btn-secondary" asp-controller="Product" asp-area="Admin" asp-action="Index">Products List</a>
                             </div>
