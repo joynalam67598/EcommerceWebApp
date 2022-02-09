@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using EcommerceWebApp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EcommerceWebApp.Data
 {
-    public class AlishaMartContext : IdentityDbContext
+    public class AlishaMartContext : IdentityDbContext<ApplicationUser>
     {
         public AlishaMartContext(DbContextOptions<AlishaMartContext> options) : base(options)
         {

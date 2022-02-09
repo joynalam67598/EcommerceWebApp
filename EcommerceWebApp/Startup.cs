@@ -1,4 +1,5 @@
 using EcommerceWebApp.Data;
+using EcommerceWebApp.Models;
 using EcommerceWebApp.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,8 +32,21 @@ namespace EcommerceWebApp
             services.AddDbContext<AlishaMartContext>(options =>
                 options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"))
             );
-            services.AddIdentity<IdentityUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AlishaMartContext>();
+
+            services.Configure<IdentityOptions>(option =>
+            {
+                option.Password.RequireDigit = false;
+                option.Password.RequiredLength = 5;
+                option.Password.RequireLowercase = false;
+                option.Password.RequireNonAlphanumeric = false;
+                option.Password.RequireUppercase = false;
+                option.Password.RequiredUniqueChars = 1;
+                option.SignIn.RequireConfirmedEmail = true;
+
+
+            });
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
@@ -40,6 +54,7 @@ namespace EcommerceWebApp
             services.AddScoped<IBrandRepository, BrandRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IAdministrationRepository, AdministrationRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
         }
 

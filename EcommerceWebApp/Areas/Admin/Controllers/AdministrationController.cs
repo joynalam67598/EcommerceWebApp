@@ -40,6 +40,13 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        public IActionResult AddUser(string status = "")
+        {
+            ViewBag.status = status;
+            return View();
+        }
+
 
     }
 }
