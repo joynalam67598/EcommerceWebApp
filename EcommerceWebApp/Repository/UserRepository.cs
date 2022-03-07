@@ -1,6 +1,7 @@
 ﻿using EcommerceWebApp.Data;
 using EcommerceWebApp.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,16 @@ namespace EcommerceWebApp.Repository
             return result;
             //if(result.Succeeded) return "User added successfully.";
             //return "Something went wrong.";
+        }
+        public async Task<List<UserModel>> GetAllUsers()
+        {
+            return await _userManager.Users.Select(user => new UserModel()
+            {
+                Id = user.Id,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Email = user.Email,
+            }).ToListAsync();
         }
     }
 }

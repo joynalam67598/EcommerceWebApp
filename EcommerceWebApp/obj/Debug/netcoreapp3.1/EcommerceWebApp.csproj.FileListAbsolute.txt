@@ -453,3 +453,6 @@ C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcorea
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Shared\Components\ImageUploader\Default.cshtml.g.cs
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Administration\AddRole.cshtml.g.cs
 C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Create.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Administration\ManageRole.cshtml.g.cs
+C:\Users\DELL\Desktop\DOT NET\EcommerceWebApp\EcommerceWebApp\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Administration\EditUserRole.cshtml.g.cs

@@ -9,6 +9,7 @@ namespace EcommerceWebApp.Models
 {
     public class UserModel
     {
+        public string Id { get; set; }
         [Required(ErrorMessage ="Please, enter user first name!")]
         [MinLength(3)]
         public string FirstName { get; set; }
