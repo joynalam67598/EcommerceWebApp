@@ -15,11 +15,15 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
     {
         private readonly RoleManager<IdentityRole> _roleManager = null;
         private readonly IAdministrationRepository _administrationRepository;
+        private readonly IUserRepository _userRepository;
+
+
         public AdministrationController(RoleManager<IdentityRole> roleManager,
-            IAdministrationRepository administrationRepository)
+            IAdministrationRepository administrationRepository, IUserRepository userRepository)
         {
             _roleManager = roleManager;
             _administrationRepository = administrationRepository;
+            _userRepository = userRepository;
         }
         [HttpGet]
         public IActionResult AddRole(string status = "")
@@ -41,12 +45,37 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddUser(string status = "")
+        public async Task<IActionResult> ManageRole()
         {
-            ViewBag.status = status;
-            return View();
+            var users = await _userRepository.GetAllUsers();
+            return View(users);
+        }
+        [HttpGet]
+        
+        // GET: AdministrationController/EditUserRole/5
+        public async Task<IActionResult> EditUserRole(string Id)
+        {
+            var userRole = await _administrationRepository.GetUserRoles(Id);
+            return View(userRole);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        // GET: AdministrationController/EditUserRole/5
+        public async Task<IActionResult> EditUserRole(RoleModel roleModel)
+        {
+             try
+                {
+                    await _administrationRepository.UpdateUserRole(roleModel);
+                    return RedirectToAction(nameof(ManageRole),
+                      new { isSuccess = true });
+                }
+                catch
+                {
+                    ModelState.AddModelError("", "This is something error message");
+                    return View(roleModel);
+                }
+        }
 
     }
 }

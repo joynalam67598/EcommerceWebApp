@@ -114,11 +114,11 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                await _categoryRepository.DeleteCategory(id);
+                return RedirectToAction(nameof(ManageCategories),
+                          new { isSuccess = true });
             }
-            await _categoryRepository.DeleteCategory(id);
-            return RedirectToAction(nameof(ManageCategories),
-                      new { isSuccess = true });
+            return NotFound();
         }
 
         // POST: CategoryController/Delete/5
