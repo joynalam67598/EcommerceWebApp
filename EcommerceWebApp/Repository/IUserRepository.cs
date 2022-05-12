@@ -9,5 +9,7 @@ namespace EcommerceWebApp.Repository
     {
         Task<IdentityResult> CreateUserAsync(UserModel userModel);
         Task<List<UserModel>> GetAllUsers();
+        Task<SignInResult> PasswordSignInAsync(SignInModel signInModel);
+        Task SignOutAsync();
     }
 }

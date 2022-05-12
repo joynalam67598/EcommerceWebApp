@@ -38,6 +38,7 @@
           "Microsoft.EntityFrameworkCore.Tools": "3.1.21",
           "Microsoft.Extensions.DependencyInjection": "3.1.21",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.1.5",
+          "runtime.win-x64.Microsoft.NETCore.App": "2.2.8",
           "Microsoft.AspNetCore.Antiforgery": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.1.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.1.0.0",
@@ -1409,6 +1410,49 @@
           }
         }
       },
+      "runtime.win-x64.Microsoft.NETCore.App/2.2.8": {
+        "runtimeTargets": {
+          "runtimes/win-x64/lib/netcoreapp2.2/Microsoft.VisualBasic.dll": {
+            "rid": "win-x64",
+            "assetType": "runtime",
+            "assemblyVersion": "10.0.4.0",
+            "fileVersion": "4.6.28208.2"
+          },
+          "runtimes/win-x64/lib/netcoreapp2.2/SOS.NETCore.dll": {
+            "rid": "win-x64",
+            "assetType": "runtime",
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "4.6.28207.3"
+          },
+          "runtimes/win-x64/lib/netcoreapp2.2/System.Collections.Immutable.dll": {
+            "rid": "win-x64",
+            "assetType": "runtime",
+            "assemblyVersion": "1.2.3.0",
+            "fileVersion": "4.6.28208.2"
+          },
+          "runtimes/win-x64/lib/netcoreapp2.2/System.Diagnostics.DiagnosticSource.dll": {
+            "rid": "win-x64",
+            "assetType": "runtime",
+            "assemblyVersion": "4.0.3.1",
+            "fileVersion": "4.6.28208.2"
+          },
+          "runtimes/win-x64/native/mscordaccore_amd64_amd64_4.6.28207.03.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "4.6.28207.3"
+          },
+          "runtimes/win-x64/native/sos.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "4.6.28207.3"
+          },
+          "runtimes/win-x64/native/sos_amd64_amd64_4.6.28207.03.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "4.6.28207.3"
+          }
+        }
+      },
       "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
         "runtimeTargets": {
           "runtimes/win-x64/native/sni.dll": {
@@ -1499,11 +1543,7 @@
           "System.Runtime": "4.3.0"
         }
       },
-      "System.ComponentModel.Annotations/4.7.0": {
-        "compile": {
-          "ref/netstandard2.1/System.ComponentModel.Annotations.dll": {}
-        }
-      },
+      "System.ComponentModel.Annotations/4.7.0": {},
       "System.ComponentModel.Primitives/4.3.0": {
         "dependencies": {
           "System.ComponentModel": "4.3.0",
@@ -4537,6 +4577,13 @@
       "sha512": "sha512-LbrynESTp3bm5O/+jGL8v0Qg5SJlTV08lpIpFesXjF6uGNMWqFnUQbYBJwZTeua6E/Y7FIM1C54Ey1btLWupdg==",
       "path": "runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0",
       "hashPath": "runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512"
+    },
+    "runtime.win-x64.Microsoft.NETCore.App/2.2.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-xbce7KYr9G4eE0F0+9MWZWHufvQilIbRQHcZVqk+K/Rk4KVcTs7agMVEQXVJlo75flhqRMDtrjEjEPp152UrAg==",
+      "path": "runtime.win-x64.microsoft.netcore.app/2.2.8",
+      "hashPath": "runtime.win-x64.microsoft.netcore.app.2.2.8.nupkg.sha512"
     },
     "runtime.win-x64.runtime.native.System.Data.SqlClient.sni/4.4.0": {
       "type": "package",

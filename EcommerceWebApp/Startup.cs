@@ -35,6 +35,7 @@ namespace EcommerceWebApp
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<AlishaMartContext>();
 
+
             services.Configure<IdentityOptions>(option =>
             {
                 option.Password.RequireDigit = false;
@@ -43,9 +44,7 @@ namespace EcommerceWebApp
                 option.Password.RequireNonAlphanumeric = false;
                 option.Password.RequireUppercase = false;
                 option.Password.RequiredUniqueChars = 1;
-                option.SignIn.RequireConfirmedEmail = true;
-
-
+                option.SignIn.RequireConfirmedEmail = false;
             });
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();

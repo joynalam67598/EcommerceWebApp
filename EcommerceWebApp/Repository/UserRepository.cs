@@ -13,11 +13,14 @@ namespace EcommerceWebApp.Repository
     {
         private readonly AlishaMartContext _alishaMartContext = null;
         private readonly UserManager<ApplicationUser> _userManager = null;
+        private  readonly SignInManager<ApplicationUser> _signInManager = null;
         public UserRepository(AlishaMartContext alishaMartContext,
-            UserManager<ApplicationUser> userManager)
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager)
         {
             _alishaMartContext = alishaMartContext;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
         public async Task<IdentityResult> CreateUserAsync(UserModel userModel)
         {
@@ -26,7 +29,7 @@ namespace EcommerceWebApp.Repository
                 FirstName = userModel.FirstName,
                 LastName = userModel.LastName,
                 Email = userModel.Email,
-                UserName = userModel.FirstName,
+                UserName = userModel.Email,
                 PhoneNumber = userModel.PhoneNumber,                
                 BirthDate = userModel.BirthDate,
                 City = userModel.City,
@@ -46,6 +49,18 @@ namespace EcommerceWebApp.Repository
                 LastName = user.LastName,
                 Email = user.Email,
             }).ToListAsync();
+        }
+        public async Task<SignInResult> PasswordSignInAsync(SignInModel signInModel)
+        {
+            var user = await _userManager.FindByEmailAsync(signInModel.Email);
+            var ok = await _userManager.CheckPasswordAsync(user, signInModel.Password);
+            var result = await _signInManager.PasswordSignInAsync(signInModel.Email, signInModel.Password, signInModel.RememberMe, false);
+            return result;
+        }
+
+        public async Task SignOutAsync()
+        {
+            await _signInManager.SignOutAsync();
         }
     }
 }
