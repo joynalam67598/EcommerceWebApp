@@ -65,16 +65,16 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
         public async Task<IActionResult> EditUserRole(RoleModel roleModel)
         {
              try
-                {
-                    await _administrationRepository.UpdateUserRole(roleModel);
-                    return RedirectToAction(nameof(ManageRole),
-                      new { isSuccess = true });
-                }
-                catch
-                {
-                    ModelState.AddModelError("", "This is something error message");
-                    return View(roleModel);
-                }
+             {
+                 await _administrationRepository.UpdateUserRole(roleModel);
+                 return RedirectToAction(nameof(ManageRole),
+                     new { isSuccess = true });
+             }
+             catch
+             {
+                 ModelState.AddModelError("", "This is something error message");
+                 return View(roleModel);
+             }
         }
 
     }

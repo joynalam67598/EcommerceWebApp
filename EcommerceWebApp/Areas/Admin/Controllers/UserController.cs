@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Routing;
 
 namespace EcommerceWebApp.Areas.Admin.Controllers
 {
@@ -101,6 +102,36 @@ namespace EcommerceWebApp.Areas.Admin.Controllers
             {
                 return View();
             }
+        }
+        
+        public IActionResult SignIn()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SignIn(SignInModel signInModel, string returnUrl)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _userRepository.PasswordSignInAsync(signInModel);
+                if (result.Succeeded)
+                {
+                    if (!string.IsNullOrEmpty(returnUrl))
+                    {
+                        return LocalRedirect(returnUrl);
+                    }
+                    return RedirectToAction("Index", "Home");
+                }
+
+                ModelState.AddModelError("", result.IsNotAllowed ? "Not allowed to login" : "Invalid Credentials");
+            }
+            return View(signInModel);
+        }
+        public async Task<IActionResult> SignOut()
+        {
+            await _userRepository.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
